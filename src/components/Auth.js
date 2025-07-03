@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/Auth.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Auth = ({ onLogin }) => {
   const [mode, setMode] = useState("login");
@@ -24,21 +26,45 @@ const Auth = ({ onLogin }) => {
       );
       
       if (mode === "register") {
-        alert("Registration successful! Please log in.");
+        toast.success("Registration successful! Please log in.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
         setMode("login");
         setFormData({ name: "", email: "", password: "" });
       } else {
         localStorage.setItem("token", res.data.token);
-        alert("Login successful");
-        onLogin(res.data.user);
+        toast.success("Login successful!", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        setTimeout(() => {
+          onLogin(res.data.user);
+        }, 2000); // Wait for toast to show
       }
     } catch {
-      alert(`${mode === "register" ? "Registration" : "Login"} failed`);
+      toast.error(`${mode === "register" ? "Registration" : "Login"} failed`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   };
 
   return (
     <div className="auth-overlay">
+      <ToastContainer />
       <section className="auth-modal">
         <nav className="auth-toggle">
           <button

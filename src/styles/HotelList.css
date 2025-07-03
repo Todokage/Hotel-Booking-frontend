@@ -1,0 +1,134 @@
+/* HotelList.css */
+
+.hotel-list-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Animation for hotel cards */
+.hotel-list-container .grid > div {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.hotel-list-container .grid > div:hover {
+  transform: translateY(-5px);
+}
+
+/* Back button styles */
+.hotel-list-container button[class*="text-blue-600"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.hotel-list-container button[class*="text-blue-600"]:hover {
+  gap: 0.3rem;
+}
+
+/* Booking form container */
+.hotel-list-container > div > div:last-child {
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Hotel details header */
+.hotel-list-container > div > div:first-child {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hotel-list-container .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .hotel-list-container > div > div:first-child {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hotel-list-container > div > div:first-child img {
+    margin-bottom: 1rem;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Book Now button animation */
+.hotel-list-container button[class*="bg-blue-600"] {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hotel-list-container button[class*="bg-blue-600"]:hover {
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+.hotel-list-container button[class*="bg-blue-600"]::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.hotel-list-container button[class*="bg-blue-600"]:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* Loading state for buttons */
+.hotel-list-container button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.hotel-list-container button.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 4px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}

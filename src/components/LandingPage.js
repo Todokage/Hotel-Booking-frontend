@@ -1,17 +1,17 @@
 import React from "react";
-
+import "../styles/LandingPage.css"; 
 const LandingPage = ({ onStart }) => {
   return (
     <div className="landing-container">
-      <h1 className="landing-title">Welcome to Hotel Booking</h1>
+      <h1 className="landing-title">ToDo Travels</h1>
       <p className="landing-description">
-        Book your perfect stay with ease. Enjoy a seamless experience for guests and admins alike.
+        Book your perfect stay with ease. Enjoy a seamless experience.
       </p>
       <button
         onClick={onStart}
         className="start-button"
       >
-        Get Started
+        BOOK NOW
       </button>
     </div>
   );
