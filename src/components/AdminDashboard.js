@@ -20,7 +20,7 @@ const AdminDashboard = () => {
   const deleteBooking = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`https://your-backend-url.onrender.com/api/bookings/${id}`, {
+      await axios.delete(`https://hotel-booking-backend-zc4l.onrender.com/api/bookings/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBookings(bookings.filter(b => b._id !== id));

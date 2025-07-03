@@ -21,7 +21,7 @@ const Auth = ({ onLogin }) => {
     const endpoint = mode === "register" ? "register" : "login";
     
     try {
-      const res = await axios.post(`http://localhost:5000/api/auth/${endpoint}`, 
+      const res = await axios.post(`https://hotel-booking-backend-zc4l.onrender.com/api/auth/${endpoint}`, 
         mode === "login" ? { email: formData.email, password: formData.password } : formData
       );
       

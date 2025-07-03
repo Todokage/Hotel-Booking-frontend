@@ -28,7 +28,7 @@ const BookingForm = ({ hotel }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:5000/api/bookings", formData, {
+      await axios.post("https://hotel-booking-backend-zc4l.onrender.com/api/bookings", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBookingSuccess(true);
