@@ -23,7 +23,7 @@ const hotels = [
   {
     name: "Park Hotel Tokyo",
     description: "Luxury hotel with panoramic city views and art installations",
-    price: 4700 * JPY_TO_KES,
+    price: 35000 * JPY_TO_KES,
     images: [
       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80",
@@ -34,7 +34,7 @@ const hotels = [
   {
     name: "Shinjuku Granbell Hotel",
     description: "Stylish boutique hotel in the heart of Shinjuku nightlife",
-    price: 5000 * JPY_TO_KES,
+    price: 18000 * JPY_TO_KES,
     images: [
       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1492571350019-22de08371fd3?auto=format&fit=crop&w=800&q=80",
