@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import BookingForm from "./BookingForm";
-import Navbar from "./Navbar";
+
 
 const theme = {
   primary: "#0a5c36",
@@ -38,7 +38,7 @@ const hotels = [
     name: "Diani Sea Resort",
     description:
       "Luxury beachfront resort with private beach access and spa facilities.",
-    price: 25000,
+    price: 7000,
     images: [
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
@@ -49,7 +49,7 @@ const hotels = [
   {
     name: "Baobab Beach Resort",
     description: "Family-friendly resort with water sports and entertainment.",
-    price: 18000,
+    price: 8500,
     images: [
       "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",

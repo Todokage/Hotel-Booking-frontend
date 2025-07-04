@@ -39,7 +39,7 @@ const hotels = [
     name: "Hôtel de Paris Monte-Carlo",
     description:
       "Legendary luxury hotel with private beach access and Michelin-starred dining",
-    price: 1200 * EUR_TO_KES,
+    price: 30 * EUR_TO_KES,
     images: [
       "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
@@ -50,7 +50,7 @@ const hotels = [
   {
     name: "Monte-Carlo Bay Hotel & Resort",
     description: "Contemporary resort with lagoon and panoramic Mediterranean views",
-    price: 850 * EUR_TO_KES,
+    price: 45 * EUR_TO_KES,
     images: [
       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=800&q=80",
