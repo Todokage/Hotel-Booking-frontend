@@ -15,52 +15,62 @@ const Auth = ({ onLogin }) => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const endpoint = mode === "register" ? "register" : "login";
-    
-    try {
-      const res = await axios.post(`https://hotel-booking-backend-zc4l.onrender.com/api/auth/${endpoint}`, 
-        mode === "login" ? { email: formData.email, password: formData.password } : formData
-      );
-      
-      if (mode === "register") {
-        toast.success("Registration successful! Please log in.", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
-        setMode("login");
-        setFormData({ name: "", email: "", password: "" });
-      } else {
-        localStorage.setItem("token", res.data.token);
-        toast.success("Login successful!", {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
-        setTimeout(() => {
-          onLogin(res.data.user);
-        }, 2000); // Wait for toast to show
-      }
-    } catch {
-      toast.error(`${mode === "register" ? "Registration" : "Login"} failed`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+  const endpoint = mode === "register" ? "register" : "login";
+
+  // Validation
+  if (!formData.email || !formData.password) {
+    toast.error("Email and password are required.", { position: "top-center" });
+    return;
+  }
+
+  if (mode === "register" && !formData.name) {
+    toast.error("Name is required for registration.", { position: "top-center" });
+    return;
+  }
+
+  console.log("Form data:", formData);
+
+  try {
+    const payload =
+      mode === "login"
+        ? {
+            email: formData.email.trim(),
+            password: formData.password,
+          }
+        : {
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            password: formData.password,
+          };
+
+    const res = await axios.post(
+      `https://hotel-booking-backend-zc4l.onrender.com/api/auth/${endpoint}`,
+      payload
+    );
+
+    if (mode === "register") {
+      toast.success("Registration successful! Please log in.");
+      setMode("login");
+      setFormData({ name: "", email: "", password: "" });
+    } else {
+      localStorage.setItem("token", res.data.token);
+      toast.success("Login successful!");
+      setTimeout(() => onLogin(res.data.user), 2000);
     }
-  };
+  } catch (err) {
+    console.error("Auth error:", err.response?.data || err.message);
+    toast.error(
+      `${mode === "register" ? "Registration" : "Login"} failed: ${
+        err.response?.data?.message || "Something went wrong."
+      }`
+    );
+  }
+};
+;
+
 
   return (
     <div className="auth-overlay">
